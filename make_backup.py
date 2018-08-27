@@ -9,19 +9,13 @@ def checkExistBackupDir(files):
     for file in files:
         if file == "backup":
             return True
-        else:
-            pass
-  
     return False
 
 # カレントディレクトリの中身を取得
 files = os.listdir("./")
 
-# バックアップファイルの存在を確認。存在すればtrue.
-backupDirExist = checkExistBackupDir(files)
-
-# "backup"フォルダが無ければ作成
-if backupDirExist == False:
+# "backup"フォルダの存在を確認し、無ければ作成
+if checkExistBackupDir(files) == False:
     os.mkdir("backup")
 
 # 時間の取得
