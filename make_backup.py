@@ -11,6 +11,17 @@ def checkExistBackupDir(files):
             return True
     return False
 
+def checkBackupComplete():
+    filesAfterBackup = os.listdir("./backup")
+    for file in filesAfterBackup:
+        # print(file)
+        if file == backupFileName:
+            print("backup successed")
+            return
+    print("backup failed")
+    print("try again")
+    return 
+
 # カレントディレクトリの中身を取得
 files = os.listdir("./")
 
@@ -26,13 +37,9 @@ print("try making backup file at: "+backupTime)
 backupFileName = "Backup_lib_system-" + backupTime + ".txt"
 
 # ファイルのコピー
-shutil.copyfile("./copies_tes.txt","./backup/" + backupFileName)
+shutil.copyfile("./tes.txt","./backup/" + backupFileName)
 
 # ファイルの存在確認
-filesInBackup = os.listdir("./backup")
-for file in filesInBackup:
-    # print(file)
-    if file == backupFileName:
-        print("backup successed")
+checkBackupComplete()
 
 sleep(3) 
